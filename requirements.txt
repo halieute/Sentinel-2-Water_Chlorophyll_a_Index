@@ -1,0 +1,6 @@
+
+earthengine-api
+geemap
+xarray
+matplotlib
+xee
