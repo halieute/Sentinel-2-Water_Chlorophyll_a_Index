@@ -3,8 +3,8 @@
 
 This repository contains a reproducible workflow to compute and visualize a chlorophyll-*a* proxy over water bodies from **Sentinel‑2** surface reflectance using the **Google Earth Engine (GEE) Python API**, **geemap**, **xarray**, and **Xee** (xarray–Earth Engine bridge).
 
-> **Author:** Souleymane Mamana Nouri Souley  
-> **Notebook:** `GEE_XEE_sen2_chl.ipynb`  
+> **Author:** Souleymane Mamana Nouri Souley
+> **Notebook:** `GEE_XEE_sen2_chl.ipynb`
 > **Goal:** Build a monthly chlorophyll-*a* (Chl-a) index mosaic (2024–2025) for a user‑drawn Region of Interest (ROI) and export a facet plot as `sen2_chl.png`.
 
 ---
@@ -12,7 +12,7 @@ This repository contains a reproducible workflow to compute and visualize a chlo
 ## 📦 What this project does
 - Links **COPERNICUS/S2_SR_HARMONIZED** (surface reflectance) with **COPERNICUS/S2_CLOUD_PROBABILITY** to mask clouds.
 - Derives **NDWI** to restrict analyses to **open water** pixels.
-- Computes a simple **Chl‑a index** from Sentinel‑2 bands:  
+- Computes a simple **Chl‑a index** from Sentinel‑2 bands:
   \[ **chl** = 4.26 * ( (B3 / B1) ^ 3.94 ) \]
 - Converts the Earth Engine ImageCollection to an **xarray.Dataset** via **Xee**.
 - **Monthly resamples** (median composites) and generates a **multifacet map** saved to `sen2_chl.png`.
@@ -83,7 +83,7 @@ ee.Initialize(
    import geemap
    map = geemap.Map(basemap='TERRAIN')
    map  # display the interactive map widget
-   
+
    # Draw a polygon using the toolbar. Then:
    roi = map.draw_last_feature.geometry()
    ```
@@ -170,23 +170,23 @@ ee.Initialize(
 ---
 
 ## 🧯 Troubleshooting
-- **`ee.EEException: Please authorize access`**  
+- **`ee.EEException: Please authorize access`**
   Re‑run `ee.Authenticate()` and ensure you select the Google account that has GEE access, then re‑run `ee.Initialize(...)`.
 
-- **`Earth Engine client not initialized`**  
+- **`Earth Engine client not initialized`**
   Ensure the `ee.Initialize(...)` cell ran successfully. Verify your `project` and `opt_url`.
 
-- **`ModuleNotFoundError: No module named 'xee'`**  
+- **`ModuleNotFoundError: No module named 'xee'`**
   Run `pip install xee` in the active kernel/environment and restart the kernel.
 
-- **Plot shows blank panels**  
+- **Plot shows blank panels**
   Check that the ROI intersects valid water and that the date range contains images. Loosen cloud threshold or broaden dates.
 
 ---
 
 ## 📚 References & Acknowledgments
-- **Google Earth Engine** (Python API) and datasets: https://developers.google.com/earth-engine  
-- **geemap**: https://geemap.org  
+- **Google Earth Engine** (Python API) and datasets: https://developers.google.com/earth-engine
+- **geemap**: https://geemap.org
 - **Xee** (xarray–Earth Engine engine): https://github.com/gee-community/xee
 
 *This tutorial code is adapted and shared for academic and non‑academic purposes. Please cite data providers and tools as appropriate.*
